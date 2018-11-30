@@ -9,35 +9,25 @@ d’un objet Color. Une image de ce type contiendra donc une matrice Color[][] p
 
 public class BruteRasterImage implements Image {
     private Color[][] pixels;
+    private int height;
+    private int width;
 
-    @Override
-    public Color getPixelColor(int x, int y) {
-        return pixels[x][y];
-    }
-
-    @Override
-    public int getWidth() {
-        return pixels.length;
-    }
-
-    @Override
-    public int getHeight() {
-        return pixels[0].length;
-    }
-
-
-    /* Constructeur */
+    /* Constructeurs */
 
     public BruteRasterImage(Color color, int width, int height) {
-        width=getWidth();
-        height=getHeight();
-        for(int i=0; i<width;i++)
-            for(int j=0; i<height;i++)
-                pixels[j][i]=color;
+        this.width = width;
+        this.height = height;
+        pixels = new Color[height][width];
+
+        for(int i=0; i<width;i++) {
+            for (int j = 0; j < height; j++) {
+                pixels[j][i] = color;
+            }
+        }
     }
 
     public BruteRasterImage(Color[][] colors) {
-        colors=this.pixels;
+        pixels = colors;
     }
 
 
@@ -69,4 +59,20 @@ public class BruteRasterImage implements Image {
     protected void setHeight(int height){
         height=getHeight();
     }
+
+    @Override
+    public Color getPixelColor(int x, int y) {
+        return pixels[x][y];
+    }
+
+    @Override
+    public int getWidth() {
+        return pixels.length;
+    }
+
+    @Override
+    public int getHeight() {
+        return pixels[0].length;
+    }
+
 }
