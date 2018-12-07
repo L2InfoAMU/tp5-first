@@ -1,6 +1,6 @@
 package viewer;
 
 public enum RasterImageType {
-    BRUTE;
+    BRUTE,
     PALETTE;
 }
